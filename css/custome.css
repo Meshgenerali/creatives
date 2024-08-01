@@ -1,0 +1,24 @@
+.profile {
+    border-radius: 50%;
+    width: 50%;
+}
+
+.floating-social {
+    position: fixed;
+    bottom: 100px; /* Adjust as needed */
+    left: 20px; /* Adjust as needed */
+    z-index: 1000;
+}
+.floating-social a {
+    display: block;
+    margin: 10px 0;
+    color: #fff;
+    background: #333;
+    padding: 10px;
+    border-radius: 50%;
+    text-align: center;
+    transition: background 0.3s;
+}
+.floating-social a:hover {
+    background: #555;
+}
