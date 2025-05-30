@@ -1,11 +1,4 @@
-/*!
-* Start Bootstrap - Creative v7.0.2 (https://startbootstrap.com/theme/creative)
-* Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
+
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -57,3 +50,41 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+window.onload = function() {
+
+        // Function to format date and time
+        const date = new Date();
+
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        let currentDate = `${day}-${month}-${year}`;
+        // Set the hidden time input value to current date and time
+       document.querySelector('input[name="time"]').value = currentDate;
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const statusDiv = document.getElementById('form-submission-status');
+        // these IDs from the previous steps
+        emailjs.sendForm('service_ej303tg', 'template_xfasuc3', this)
+            .then(() => {
+                console.log('SUCCESS!');
+                statusDiv.innerHTML = `
+            <div class="alert alert-success" role="alert">
+                Email Send successfully!
+            </div>
+        `;
+
+        this.reset();
+            }, (error) => {
+                console.log('FAILED...', error);
+                statusDiv.innerHTML = `
+            <div class="alert alert-danger" role="alert">
+                Please fill in all fields before submitting.
+            </div>
+        `;
+            });
+    });
+}
